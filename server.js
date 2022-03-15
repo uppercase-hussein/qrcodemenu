@@ -28,6 +28,7 @@ app.use(bodyParser.json())
 //set routes
 app.use('/product', require('./routes/products'));
 app.get("/", (req, res)=>res.json({msg:"Hello"}))
+app.get("/hello", (req, res)=>res.json({msg:"Hello World"}))
 
 
 
