@@ -10,6 +10,7 @@ const ProductSchema = new Schema({
     price: Number,
     promo_price: Number,
     imageUrl: String,
+    outlet: String,
     is_active: {
         type: Boolean,
         default: true
