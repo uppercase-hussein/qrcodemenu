@@ -16,6 +16,7 @@ router.post('/create',async(req,res)=>{
         subgroup: subgroup.toLowerCase(),
         category: category.toLowerCase(),
         name: name.toLowerCase(),
+        imageUrl: "",
         price,
       })
       console.log(newProduct);
