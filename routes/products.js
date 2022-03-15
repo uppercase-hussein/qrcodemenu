@@ -17,6 +17,7 @@ router.post('/create',async(req,res)=>{
         category: category.toLowerCase(),
         name: name.toLowerCase(),
         imageUrl: "",
+        outlet: "foodcourt",
         price,
       })
       console.log(newProduct);
