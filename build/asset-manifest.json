@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0bd82602.css",
+    "main.js": "/static/js/main.bf6c088f.js",
+    "static/js/787.b70a073a.chunk.js": "/static/js/787.b70a073a.chunk.js",
+    "static/media/burger-promo.png": "/static/media/burger-promo.d6f20db929517197608e.png",
+    "static/media/8.png": "/static/media/8.3c34a9c64c80e81d3272.png",
+    "static/media/41.png": "/static/media/41.a9fa7cd59a530be12cfd.png",
+    "static/media/gen_logo.png": "/static/media/gen_logo.0f9e50f1f0379a03fa4b.png",
+    "static/media/40.png": "/static/media/40.3acc8ed82cc098f7f42d.png",
+    "static/media/9.png": "/static/media/9.9c7ea7f65991c378194b.png",
+    "static/media/113.png": "/static/media/113.d9f8f4e2882e0dbe2520.png",
+    "static/media/sale.png": "/static/media/sale.d5894c5846a2beef8232.png",
+    "static/media/32.png": "/static/media/32.dea98c516e8d2ebfd35a.png",
+    "static/media/16.png": "/static/media/16.2dfee58d987034ad9867.png",
+    "static/media/redtpmatto.png": "/static/media/redtpmatto.92c73339fb0cb050f4d9.png",
+    "static/media/7.png": "/static/media/7.2ef450155de4f9e886b4.png",
+    "static/media/5.png": "/static/media/5.644602874fe5500c66c2.png",
+    "static/media/14.png": "/static/media/14.c47b24cfff034673239e.png",
+    "static/media/default_meal.jpeg": "/static/media/default_meal.202d86fc46080ff71b83.jpeg",
+    "index.html": "/index.html",
+    "main.0bd82602.css.map": "/static/css/main.0bd82602.css.map",
+    "main.bf6c088f.js.map": "/static/js/main.bf6c088f.js.map",
+    "787.b70a073a.chunk.js.map": "/static/js/787.b70a073a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0bd82602.css",
+    "static/js/main.bf6c088f.js"
+  ]
+}
