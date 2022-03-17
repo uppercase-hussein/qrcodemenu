@@ -25,6 +25,47 @@ router.get('/all/:outlet', async (req,res)=>{
   }
 })
 
+router.get('/total/:outlet', async (req,res)=>{
+  let outlet = req.params.outlet
+  if(!outlet) return;
+  try{
+    const totalProducts = await ProductModel.find({outlet}).count();
+    res.json(totalProducts)
+  }
+  catch(err){
+    return res.json({
+      errors: [
+        {
+          msg: "An error occurred, try again",
+          err
+        }
+      ]
+    });
+  }
+})
+
+router.post('/group', async (req,res)=>{
+  let {outlet, start, limit} = req.body;
+  if(!outlet) return;
+  try{
+    const products = await ProductModel.find({outlet})
+                                          .skip(start)
+                                          .limit(limit);
+
+    res.json({products, start: parseInt(start) + parseInt(limit)})
+  }
+  catch(err){
+    return res.json({
+      errors: [
+        {
+          msg: "An error occurred, try again",
+          err
+        }
+      ]
+    });
+  }
+})
+
 router.post('/create',async(req,res)=>{
     try{
       const {group, subgroup, category, name, price, promo_price} = req.body
@@ -36,8 +77,8 @@ router.post('/create',async(req,res)=>{
         subgroup: subgroup.toLowerCase(),
         category: category.toLowerCase(),
         name: name.toLowerCase(),
-        imageUrl: "",
-        outlet: "foodcourt",
+        imageUrl,
+        outlet,
         price,
       })
       console.log(newProduct);
