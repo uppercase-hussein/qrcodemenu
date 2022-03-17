@@ -87,6 +87,36 @@ router.post('/group', async (req,res)=>{
   }
 })
 
+router.post('/sort', async (req,res)=>{
+  let {outlet, start, limit, sortValue } = req.body;
+  if(!outlet) return;
+  let sortVal;
+  switch(sortValue){
+    case "price_low": sortVal = "price" ; break;
+    case "price_high":  sortVal = "-price" ; break;
+    case "name_asc":  sortVal = {"name": "asc"} ; break;
+    case "name_desc":  sortVal = {"name": "desc"} ; break;
+  }
+  try{
+    const products = await ProductModel.find({outlet})
+                                          // .skip(start)
+                                          // .limit(limit)
+                                          .sort(sortVal);
+
+    res.json(products)
+  }
+  catch(err){
+    return res.json({
+      errors: [
+        {
+          msg: "An error occurred, try again",
+          err
+        }
+      ]
+    });
+  }
+})
+
 router.post('/search', async (req,res)=>{
   let {outlet, searchQuery} = req.body;
   if(!outlet) return;
