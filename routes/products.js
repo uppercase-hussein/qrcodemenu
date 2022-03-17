@@ -68,9 +68,7 @@ router.post('/group', async (req,res)=>{
 
 router.post('/create',async(req,res)=>{
     try{
-      const {group, subgroup, category, name, price, promo_price} = req.body
-      console.log(req.body);
-      console.log(uuid());
+      const {group, subgroup, category, name, price, imageUrl, outlet, promo_price} = req.body
       const newProduct = new ProductModel({
         uid: uuid(),
         group: group.toLowerCase(),
