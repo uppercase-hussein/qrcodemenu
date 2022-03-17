@@ -25,6 +25,26 @@ router.get('/all/:outlet', async (req,res)=>{
   }
 })
 
+router.get('/single/:uid', async (req,res)=>{
+  let uid = req.params.uid
+
+  if(!uid) return;
+  try{
+    const product = await ProductModel.findOne({uid})
+    res.json(product)
+  }
+  catch(err){
+    return res.json({
+      errors: [
+        {
+          msg: "An error occurred, try again",
+          err
+        }
+      ]
+    });
+  }
+})
+
 router.get('/total/:outlet', async (req,res)=>{
   let outlet = req.params.outlet
   if(!outlet) return;
@@ -50,9 +70,29 @@ router.post('/group', async (req,res)=>{
   try{
     const products = await ProductModel.find({outlet})
                                           .skip(start)
-                                          .limit(limit);
+                                          .limit(limit)
+                                          .sort({"uid":-1});
 
     res.json({products, start: parseInt(start) + parseInt(limit)})
+  }
+  catch(err){
+    return res.json({
+      errors: [
+        {
+          msg: "An error occurred, try again",
+          err
+        }
+      ]
+    });
+  }
+})
+
+router.post('/search', async (req,res)=>{
+  let {outlet, searchQuery} = req.body;
+  if(!outlet) return;
+  try{
+    const products = await ProductModel.find({outlet, name: {$regex: searchQuery }}).sort({"uid":-1});
+    res.json({products, query: searchQuery})
   }
   catch(err){
     return res.json({
@@ -77,7 +117,7 @@ router.post('/create',async(req,res)=>{
         name: name.toLowerCase(),
         imageUrl,
         outlet,
-        price,
+        price
       })
       console.log(newProduct);
       const saveProduct = await newProduct.save();
